@@ -1,0 +1,13 @@
+    
+    <div class="card h container  ">
+        <img src={{item.image}} class="card-img-top mt-1" alt="...">
+        <div class="card-body">
+          <p class="card-title">{{item.title}}</p>
+          <div class="p-b ">
+            <p class="card-text text-end">{{item.price}} E.L</p>
+
+            <a [routerLink]="['/card', item.id]" class="btn btn-primary me-1">more ditals</a>
+            <button id="add" (click)="setCounter($event)" class="btn btn-primary ms-1">add card</button>
+          </div>
+        </div>
+      </div>

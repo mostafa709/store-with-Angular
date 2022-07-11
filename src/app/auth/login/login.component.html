@@ -1,0 +1,50 @@
+<form #myform="ngForm"  class="col-5 mt-5 mx-auto">
+    <h4 for="inputPassword">Email</h4>
+      <input  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+
+      ngModel
+      name="email"
+      #email="ngModel" 
+        class="form-control"
+        required
+        id="inputEmail"
+      />
+   
+      <p  *ngIf="
+      !email.valid && email.touched
+    " class="text-danger">email is faild</p>
+      <h4 class="mb-3" for="inputPassword">Password</h4>
+      <input
+        type="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+
+        class="form-control"
+        id="inputPassword"
+      />
+             <div
+        *ngIf="
+        !password.valid && password.touched
+        "
+      >
+        <p class="text-danger">password is faild</p>
+      </div> 
+      <button
+        type="submit"
+        class="btn btn-primary w-100 mt-3"
+      >
+        Login
+      </button>
+
+    <span class="d-inline">Don't have acount?</span>
+    <span>
+
+      <a
+        class="d-inline text-black fs-4 text-center"
+        routerLink="/auth/register"
+        > Register Now</a
+      >
+    </span> 
+</form>

@@ -1,0 +1,17 @@
+<div *ngIf="notfound" class="emtyCardIcon">
+  <i class="text-danger fa-solid fa-cart-arrow-down"></i>
+</div>
+
+<div class="container mt-4 mx-auto row" *ngFor="let item of items; index as i">
+  <img src="{{ item.image }}" class="col-3 mt-1" alt="..." />
+  <p class="col-1">{{ item.title }}</p>
+  <p class="col-1">{{ item.price }}</p>
+  <span class="col-1" >L.E</span>
+  <button class="col-1 btn btn-primary" (click)="increment(item.id)">+</button>
+  <span class="col-1" id="{{ item.id }}">{{ item.count }}</span>
+  <button class="col-1 btn btn-primary me-4" (click)="decrement(item.id)">-</button>
+  <button class="btn btn-danger col-1" (click)="remove(i,item.id)">remove</button>
+  <p class="price col-1">{{item.totlePrice}}L.E</p>
+</div>
+<h2 *ngIf="!notfound" class="emtyCardIcon" class="container text-end">{{totlePrice}}L.E</h2>
+

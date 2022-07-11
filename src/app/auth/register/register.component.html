@@ -1,0 +1,59 @@
+<form [formGroup]="myform"  class="col-11 mt-5 mx-auto">
+      <h4 class="mt-3">Email</h4>
+        <input type="email" name="email" formControlName="email" class="form-control" id="inputEmail" />
+        <p  *ngIf="myform.controls['email'].errors && myform.controls['email'].touched" class="text-danger">email is not valid</p>
+        <h4 class="mt-3">name</h4>
+        <input type="text" name="myname" formControlName="myname" class="form-control" id="inputEmail" />
+        <p  *ngIf="myform.controls['myname'].errors && myform.controls['myname'].touched" class="text-danger">your name is required</p>
+        
+        <h4 class="mt-3">user name</h4>
+        <input type="text" name="username" formControlName="username" class="form-control" id="inputEmail" />
+        <p  *ngIf="myform.controls['username'].errors && myform.controls['username'].touched" class="text-danger">user name is not valid</p>
+        
+
+        <h4 class="mt-3">Password</h4>
+        <input type="password" name="password" formControlName="password" class="form-control" id="inputPassword" />
+        <p *ngIf="myform.controls['password'].errors && myform.controls['password'].touched" class="text-danger">password is not valid</p>
+        
+        <h4 class="mt-3">Confirm Password</h4>
+        <input type="password" name="confirm" formControlName="confirm" class="form-control" id="inputPassword" />
+        <p *ngIf="passwordMatchError" class="text-danger">password is not valid</p>
+          
+
+        <button type="submit" [disabled]="!myform.valid" class="btn btn-success me-4  mt-3" id="Resguster">Register</button>
+        <span class=" d-inline-block">Already have acount!</span>
+        <span>
+    
+          <a
+            class=" d-inline-block text-black fs-4 text-center"
+            routerLink="/auth/sign"
+            > Login</a
+          >
+        </span>
+        
+      <!-- --------- -->
+<button type="button" (click)="addAdress()"class="btn d-block bg-danger ms-auto text-white " >Add Adress</button>
+
+<div formArrayName="address">
+  <div *ngFor="let adress of addresses.controls; let i=index">
+    <div [formGroupName]="i">
+     <span>Adress</span> 
+      <input type="text" class="form-control"  formControlName="myadress">
+      <p *ngIf="addresses.controls[i].get('myadress')?.errors && addresses.controls[i].get('myadress')?.touched" class="text-danger">your adress is not valid</p>
+      <span>street</span> 
+      <input type="text" class="form-control"  formControlName="street">
+      <p *ngIf="addresses.controls[i].get('street')?.errors && addresses.controls[i].get('street')?.touched" class="text-danger">your street is not valid</p>
+
+     <span>country</span> 
+      <input type="text"  class="form-control" formControlName="country">
+      <p *ngIf="addresses.controls[i].get('country')?.errors && addresses.controls[i].get('country')?.touched" class="text-danger">your street is not valid</p>
+
+     <span>city</span> 
+      <input type="text" class="form-control"  formControlName="city">
+
+      <button (click)="removeAdress(i)" class="btn d-block bg-danger ms-auto text-white ">Remove Adress</button>
+    </div>
+  </div>
+</div>
+    </form>
+  
